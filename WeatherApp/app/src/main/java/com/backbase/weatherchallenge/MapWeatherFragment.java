@@ -2,6 +2,7 @@ package com.backbase.weatherchallenge;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,13 +13,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.identity.intents.Address;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,8 +27,11 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -47,7 +50,7 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
     private static final String ARG_PARAM2 = "param2";
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final String TAG = "MapWeatherFragment";
-    private static final float DEFAULT_ZOOM = 1;
+    private static final float DEFAULT_ZOOM = 5;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -118,12 +121,6 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
         return content;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     /**
      * Manipulates the map once available.
@@ -155,10 +152,29 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
             @Override
             public void onMapClick(LatLng point) {
                 mMap.clear();
-                MarkerOptions marker = new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("New Marker");
-                mMap.addMarker(marker);
+                String markerDescription = getMapMarkDescription(point.latitude, point.longitude);
+                MarkerOptions marker = new MarkerOptions().position(point).title(markerDescription);
+                mMap.addMarker(marker).showInfoWindow();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, DEFAULT_ZOOM));
+                if (mListener != null) {
+                    mListener.onMapFragmentMapTouch(point);
+                }
             }
         });
+    }
+
+    private String getMapMarkDescription(double latitude, double longitude) {
+        String markerDescription = myContext.getString(R.string.unknown_mark);
+        Geocoder gcd = new Geocoder(myContext, Locale.getDefault());
+        try {
+            List<android.location.Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
+            if (addresses.size() > 0) {
+                markerDescription = String.format("%s,%s", addresses.get(0).getCountryName(), addresses.get(0).getLocality());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return markerDescription;
     }
 
 
@@ -179,14 +195,16 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
         if (mCameraPosition != null) {
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
         } else if (mLastKnownLocation != null) {
+            String markerDescription = getMapMarkDescription(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
             LatLng mLocation = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mLocation, DEFAULT_ZOOM));
-            mMap.addMarker(new MarkerOptions().position(mLocation).title("Marker in Sydney"));
+            mMap.addMarker(new MarkerOptions().position(mLocation).title(markerDescription)).showInfoWindow();
         } else {
             Log.d(TAG, "Current location is null. Using defaults.");
             LatLng mDefaultLocation = new LatLng(-34, 151);
+            MarkerOptions defaultMarker = new MarkerOptions().position(mDefaultLocation).title("Marker in Sydney");
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
-            mMap.addMarker(new MarkerOptions().position(mDefaultLocation).title("Marker in Sydney"));
+            mMap.addMarker(defaultMarker).showInfoWindow();
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
@@ -214,8 +232,7 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -255,7 +272,7 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onMapFragmentMapTouch(LatLng point);
     }
 
     @Override

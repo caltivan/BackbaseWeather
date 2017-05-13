@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class HomeActivity extends AppCompatActivity implements MapWeatherFragment.OnFragmentInteractionListener {
 
     @Override
@@ -13,7 +15,7 @@ public class HomeActivity extends AppCompatActivity implements MapWeatherFragmen
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onMapFragmentMapTouch(LatLng point) {
 
     }
 }
