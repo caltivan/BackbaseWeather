@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.MapView;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +30,9 @@ public class MapWeatherFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private Context myContext;
+    private View content;
+    private MapView mapView;
 
     public MapWeatherFragment() {
         // Required empty public constructor
@@ -63,6 +68,10 @@ public class MapWeatherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        myContext = this.getContext();
+        content = inflater.inflate(R.layout.fragment_map_weather, container, false);
+        mapView = (MapView) content.findViewById(R.id.mapWeatherView);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map_weather, container, false);
     }
