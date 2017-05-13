@@ -12,8 +12,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -110,6 +113,8 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
                 .addApi(Places.PLACE_DETECTION_API)
                 .build();
         mGoogleApiClient.connect();
+
+
         return content;
     }
 
@@ -141,6 +146,19 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
         //updateLocationUI();
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+        mapTouchConfiguration();
+
+    }
+
+    private void mapTouchConfiguration() {
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng point) {
+                mMap.clear();
+                MarkerOptions marker = new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("New Marker");
+                mMap.addMarker(marker);
+            }
+        });
     }
 
 
@@ -223,6 +241,7 @@ public class MapWeatherFragment extends Fragment implements OnMapReadyCallback, 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
