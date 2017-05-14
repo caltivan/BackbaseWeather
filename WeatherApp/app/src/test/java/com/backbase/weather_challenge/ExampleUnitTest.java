@@ -1,4 +1,4 @@
-package com.backbase.weatherchallenge;
+package com.backbase.weather_challenge;
 
 import org.junit.Test;
 

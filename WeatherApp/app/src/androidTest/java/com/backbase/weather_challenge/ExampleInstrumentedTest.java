@@ -1,4 +1,4 @@
-package com.backbase.weatherchallenge;
+package com.backbase.weather_challenge;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
