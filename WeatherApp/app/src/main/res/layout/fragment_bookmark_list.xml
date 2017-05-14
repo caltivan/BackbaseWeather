@@ -10,7 +10,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.backbase.weather_challenge.BookmarkListFragment"
+    tools:context="com.backbase.weather_challenge.view.BookmarkListFragment"
     tools:listitem="@layout/bookmark_row">
 
 </android.support.v7.widget.RecyclerView>

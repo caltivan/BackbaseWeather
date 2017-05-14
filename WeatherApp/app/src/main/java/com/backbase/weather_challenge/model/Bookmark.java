@@ -1,4 +1,4 @@
-package com.backbase.weather_challenge.util;
+package com.backbase.weather_challenge.model;
 
 /**
  * Created by Easy Solutions on 5/13/17.

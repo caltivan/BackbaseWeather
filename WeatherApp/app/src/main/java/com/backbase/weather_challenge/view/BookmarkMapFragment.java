@@ -1,4 +1,4 @@
-package com.backbase.weather_challenge;
+package com.backbase.weather_challenge.view;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -14,8 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.backbase.weather_challenge.util.Bookmark;
-import com.backbase.weather_challenge.util.BookmarkController;
+import com.backbase.weather_challenge.R;
+import com.backbase.weather_challenge.model.Bookmark;
+import com.backbase.weather_challenge.controller.BookmarkController;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;

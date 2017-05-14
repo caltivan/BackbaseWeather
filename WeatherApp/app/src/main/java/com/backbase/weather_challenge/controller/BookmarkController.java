@@ -1,4 +1,4 @@
-package com.backbase.weather_challenge.util;
+package com.backbase.weather_challenge.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,6 +6,7 @@ import android.location.Address;
 import android.location.Geocoder;
 
 import com.backbase.weather_challenge.R;
+import com.backbase.weather_challenge.model.Bookmark;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

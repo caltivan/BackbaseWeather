@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/bookmarkMapFragment"
-        android:name="com.backbase.weather_challenge.BookmarkMapFragment"
+        android:name="com.backbase.weather_challenge.view.BookmarkMapFragment"
         android:layout_width="365dp"
         android:layout_height="235dp"
         android:layout_marginLeft="8dp"
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/bookmarkListFragment"
-        android:name="com.backbase.weather_challenge.BookmarkListFragment"
+        android:name="com.backbase.weather_challenge.view.BookmarkListFragment"
         android:layout_width="377dp"
         android:layout_height="240dp"
         android:layout_marginBottom="8dp"

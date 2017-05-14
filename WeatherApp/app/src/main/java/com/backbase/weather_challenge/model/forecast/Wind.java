@@ -1,5 +1,5 @@
 
-package com.backbase.weather_challenge.model;
+package com.backbase.weather_challenge.model.forecast;
 
 
 public class Wind {

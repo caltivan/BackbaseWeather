@@ -6,7 +6,10 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.backbase.weather_challenge.util.Bookmark;
+import com.backbase.weather_challenge.model.Bookmark;
+import com.backbase.weather_challenge.view.BookmarkListFragment;
+import com.backbase.weather_challenge.view.BookmarkMapFragment;
+import com.backbase.weather_challenge.view.CityForecastFragmentDialog;
 
 public class HomeActivity extends AppCompatActivity implements BookmarkMapFragment.OnFragmentInteractionListener, BookmarkListFragment.OnListFragmentInteractionListener {
 

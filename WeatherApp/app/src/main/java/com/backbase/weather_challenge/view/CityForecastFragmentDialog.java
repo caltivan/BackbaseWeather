@@ -1,22 +1,19 @@
-package com.backbase.weather_challenge;
+package com.backbase.weather_challenge.view;
 
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.backbase.weather_challenge.R;
 import com.backbase.weather_challenge.model.Forecast;
-import com.backbase.weather_challenge.util.Bookmark;
-import com.backbase.weather_challenge.util.BookmarkController;
+import com.backbase.weather_challenge.model.Bookmark;
+import com.backbase.weather_challenge.controller.BookmarkController;
 import com.backbase.weather_challenge.util.ConnectionHelper;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 
 /**

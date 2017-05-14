@@ -1,4 +1,4 @@
-package com.backbase.weather_challenge;
+package com.backbase.weather_challenge.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.backbase.weather_challenge.BookmarkListFragment.OnListFragmentInteractionListener;
-import com.backbase.weather_challenge.util.Bookmark;
+import com.backbase.weather_challenge.view.BookmarkListFragment.OnListFragmentInteractionListener;
+import com.backbase.weather_challenge.R;
+import com.backbase.weather_challenge.model.Bookmark;
 
 import java.util.List;
 
