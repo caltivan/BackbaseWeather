@@ -106,8 +106,6 @@ public class BookmarkListFragment extends Fragment {
             @Override
             protected BookmarkRecyclerViewAdapter doInBackground(RecyclerView... params) {
                 view = params[0];
-                // ConnectionHelper connectionHelper = new ConnectionHelper();
-                // String serverResponse = connectionHelper.getWeatherServiceInfo(0, 0, "");
                 ArrayList<Bookmark> bookmarkList = bookmarkStoreController.getBookmarks();
                 BookmarkRecyclerViewAdapter bookmarkAdapter = new BookmarkRecyclerViewAdapter(bookmarkList, mListener);
                 return bookmarkAdapter;
@@ -139,7 +137,7 @@ public class BookmarkListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onSelectBookmarkFromList(Bookmark bookmark);
+        void onSelectBookmarkFromList(Bookmark bookmark, int index);
 
         void onRemoveBookmarkFromList(Bookmark bookmark, int index);
     }

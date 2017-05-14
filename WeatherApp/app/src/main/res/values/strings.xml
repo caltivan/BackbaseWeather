@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">WeatherChallenge</string>
+    <string name="app_name">Weather Challenge</string>
+    <string name="city_forecast_dialog_title">City Forecast</string>
+
     <string name="unknown_mark">Unknown</string>
 
 

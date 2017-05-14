@@ -2,6 +2,7 @@ package com.backbase.weather_challenge;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,12 +12,13 @@ public class HomeActivity extends AppCompatActivity implements BookmarkMapFragme
 
     private BookmarkMapFragment bookmarkMapFragment;
     private BookmarkListFragment bookmarkListFragment;
-    private int mStackLevel = 0;
+    private Context myContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        myContext = this;
         bookmarkMapFragment = (BookmarkMapFragment) getSupportFragmentManager().findFragmentById(R.id.bookmarkMapFragment);
         bookmarkListFragment = (BookmarkListFragment) getSupportFragmentManager().findFragmentById(R.id.bookmarkListFragment);
 
@@ -29,9 +31,9 @@ public class HomeActivity extends AppCompatActivity implements BookmarkMapFragme
     }
 
     @Override
-    public void onSelectBookmarkFromList(Bookmark bookmark) {
+    public void onSelectBookmarkFromList(Bookmark bookmark, int index) {
         bookmarkMapFragment.focusBookmarkMapMark(bookmark);
-        showDialog();
+        showCityForecastDialog(index);
 
     }
 
@@ -44,20 +46,19 @@ public class HomeActivity extends AppCompatActivity implements BookmarkMapFragme
 
     }
 
-    public void showDialog() {
-        mStackLevel++;
-
+    public void showCityForecastDialog(int index) {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
+        String dialogTitle = myContext.getString(R.string.city_forecast_dialog_title);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        Fragment prev = getFragmentManager().findFragmentByTag(dialogTitle);
         if (prev != null) {
             ft.remove(prev);
         }
         ft.addToBackStack(null);
         // Create and show the dialog.
-        CityForecastFragmentDialog newFragment = CityForecastFragmentDialog.newInstance(mStackLevel);
-        newFragment.show(ft, "dialog");
+        CityForecastFragmentDialog newFragment = CityForecastFragmentDialog.newInstance(index);
+        newFragment.show(ft, dialogTitle);
     }
 }

@@ -91,4 +91,10 @@ public class BookmarkController {
         return bookmarks;
     }
 
+    public Bookmark getBookmarkByIndex(int index) {
+        ArrayList<Bookmark> bookmarks = getBookmarks();
+        Bookmark bookmark = bookmarks.get(index);
+        return bookmark;
+    }
+
 }
