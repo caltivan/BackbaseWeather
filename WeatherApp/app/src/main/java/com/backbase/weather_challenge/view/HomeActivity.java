@@ -3,6 +3,7 @@ package com.backbase.weather_challenge.view;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -63,7 +64,8 @@ public class HomeActivity extends AppCompatActivity implements BookmarkMapFragme
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_help) {
-
+            Intent myIntent = new Intent(myContext, HelpActivity.class);
+            startActivity(myIntent);
             return true;
 
         }
