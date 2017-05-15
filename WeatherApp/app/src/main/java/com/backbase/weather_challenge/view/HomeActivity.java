@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import com.backbase.weather_challenge.R;
 import com.backbase.weather_challenge.model.Bookmark;
 
+/**
+ * Created by JGomez on 5/13/17.
+ * This is the main activity where the user has to navigate through the map and list bookmark fragments
+ */
 public class HomeActivity extends AppCompatActivity implements BookmarkMapFragment.OnFragmentInteractionListener, BookmarkListFragment.OnListFragmentInteractionListener {
 
     private BookmarkMapFragment bookmarkMapFragment;
@@ -25,8 +29,6 @@ public class HomeActivity extends AppCompatActivity implements BookmarkMapFragme
         myContext = this;
         bookmarkMapFragment = (BookmarkMapFragment) getSupportFragmentManager().findFragmentById(R.id.bookmarkMapFragment);
         bookmarkListFragment = (BookmarkListFragment) getSupportFragmentManager().findFragmentById(R.id.bookmarkListFragment);
-
-
     }
 
     @Override

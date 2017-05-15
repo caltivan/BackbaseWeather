@@ -7,6 +7,11 @@ import android.webkit.WebView;
 
 import com.backbase.weather_challenge.R;
 
+/**
+ * Created by JGomez on 5/15/17.
+ *
+ * This activity display a web view with a help.html stored by the assets of the project
+ */
 public class HelpActivity extends AppCompatActivity {
 
     private Context myContext;

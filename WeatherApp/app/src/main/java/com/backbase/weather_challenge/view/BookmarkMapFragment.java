@@ -33,12 +33,18 @@ import java.util.ArrayList;
 
 
 /**
+ *
+ * Created by JGomez on 5/13/17.
+ *
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link BookmarkMapFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link BookmarkMapFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
+ * This fragment will handle all the interaction of the map bookmarking
+ *
  */
 public class BookmarkMapFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {

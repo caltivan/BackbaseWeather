@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 
 /**
  * Created by JGomez on 5/13/17.
+ * 
+ * This fragment dialog shows all the forecast details of the city
  */
 
 public class CityForecastFragmentDialog extends DialogFragment {
