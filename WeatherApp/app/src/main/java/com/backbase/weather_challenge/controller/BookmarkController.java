@@ -47,10 +47,13 @@ public class BookmarkController {
         try {
             List<Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
             if (addresses.size() > 0) {
-                country = addresses.get(0).getCountryName();
-                if (city != null && !city.equals("null")) {
-                    city = addresses.get(0).getLocality();
+                Address address = addresses.get(0);
+                country = address.getCountryName();
+                city = address.getLocality();
+                if(city == null){
+                    city =address.getFeatureName();
                 }
+
             }
         } catch (IOException e) {
             e.printStackTrace();
