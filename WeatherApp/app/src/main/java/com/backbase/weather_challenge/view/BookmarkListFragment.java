@@ -117,6 +117,11 @@ public class BookmarkListFragment extends Fragment {
             protected void onPostExecute(BookmarkRecyclerViewAdapter adapter) {
                 super.onPostExecute(adapter);
                 view.setAdapter(adapter);
+                if (adapter.getItemCount() == 0) {
+                    view.setVisibility(View.GONE);
+                } else {
+                    view.setVisibility(View.VISIBLE);
+                }
             }
 
         }.execute(recyclerView);
