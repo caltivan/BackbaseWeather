@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -57,6 +59,7 @@ public class CityForecastFragmentDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bookmarkIndex = getArguments().getInt(BUNDLE_BOOKMARK_INDEX);
+
     }
 
     @Override
@@ -64,7 +67,10 @@ public class CityForecastFragmentDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         View content = inflater.inflate(R.layout.fragment_dialog_city_forecast, container, false);
         myContext = getActivity();
-        getDialog().setTitle(myContext.getString(R.string.city_forecast_dialog_title));
+
+        weatherProgressBar = (ProgressBar) content.findViewById(R.id.weatherProgressBar);
+
+        // Weather general
         ciyTextView = (TextView) content.findViewById(R.id.cityTextView);
         countryTextView = (TextView) content.findViewById(R.id.countryTextView);
         temperatureTextView = (TextView) content.findViewById(R.id.temperatureTextView);
@@ -77,8 +83,6 @@ public class CityForecastFragmentDialog extends DialogFragment {
         // Wind values
         windSpeedTextView = (TextView) content.findViewById(R.id.windSpeedTextView);
         windDegTextView = (TextView) content.findViewById(R.id.windDegTextView);
-        //
-        weatherProgressBar = (ProgressBar) content.findViewById(R.id.weatherProgressBar);
 
         bookmarkController = new BookmarkController(myContext);
         Bookmark bookmark = bookmarkController.getBookmarkByIndex(bookmarkIndex);
