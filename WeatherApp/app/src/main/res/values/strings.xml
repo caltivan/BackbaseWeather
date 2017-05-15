@@ -4,6 +4,9 @@
 
     <string name="unknown_mark">Unknown</string>
     <string name="temperature_title">Temperature</string>
+
+    <string name="min_temperature_title">Min Temp</string>
+    <string name="max_temperature_title">Max Temp</string>
     <string name="humidity_title">Humidity</string>
     <string name="pressure_title">Pressure</string>
     <string name="weather_general_info_title">General</string>

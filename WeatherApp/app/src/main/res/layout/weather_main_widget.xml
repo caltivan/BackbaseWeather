@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Bogota"
             android:textAlignment="center"
+            android:textColor="@color/colorWeatherCity"
             android:textSize="@dimen/forecast_city_text_size"/>
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Colombia"
             android:textAlignment="center"
+            android:textColor="@color/colorWeatherCountry"
             android:textSize="@dimen/forecast_country_text_size"/>
 
         <ProgressBar
@@ -46,10 +48,11 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/generalTemperatureTextView"
+            android:id="@+id/temperatureTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textColor="@color/colorWeatherTemperature"
             android:textSize="@dimen/forecast_temperature_text_size"/>
 
         <TextView
@@ -57,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textColor="@color/colorWeatherDescription"
             android:textSize="@dimen/forecast_description_text_size"/>
 
     </LinearLayout>

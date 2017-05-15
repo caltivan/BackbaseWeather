@@ -31,13 +31,14 @@ public class CityForecastFragmentDialog extends DialogFragment {
     private TextView ciyTextView;
     private TextView countryTextView;
     private TextView temperatureTextView;
-    private TextView humidtyTextView;
-    private TextView pressureTextView;
-    private TextView generalTemperatureTextView;
     private TextView weatherDescriptionTextView;
-    private ProgressBar weatherProgressBar;
+
+    private TextView humidityTextView;
+    private TextView pressureTextView;
     private TextView windSpeedTextView;
     private TextView windDegTextView;
+    private ProgressBar weatherProgressBar;
+
 
     /**
      * Create a new instance of MyDialogFragment, providing "num"
@@ -66,19 +67,18 @@ public class CityForecastFragmentDialog extends DialogFragment {
         getDialog().setTitle(myContext.getString(R.string.city_forecast_dialog_title));
         ciyTextView = (TextView) content.findViewById(R.id.cityTextView);
         countryTextView = (TextView) content.findViewById(R.id.countryTextView);
-        generalTemperatureTextView = (TextView) content.findViewById(R.id.generalTemperatureTextView);
+        temperatureTextView = (TextView) content.findViewById(R.id.temperatureTextView);
         weatherDescriptionTextView = (TextView) content.findViewById(R.id.weatherDescriptionTextView);
-        weatherProgressBar = (ProgressBar) content.findViewById(R.id.weatherProgressBar);
 
         // Weather values
-        temperatureTextView = (TextView) content.findViewById(R.id.temperatureTextView);
-        humidtyTextView = (TextView) content.findViewById(R.id.humidityTextView);
+        humidityTextView = (TextView) content.findViewById(R.id.humidityTextView);
         pressureTextView = (TextView) content.findViewById(R.id.pressureTextView);
 
         // Wind values
         windSpeedTextView = (TextView) content.findViewById(R.id.windSpeedTextView);
         windDegTextView = (TextView) content.findViewById(R.id.windDegTextView);
-
+        //
+        weatherProgressBar = (ProgressBar) content.findViewById(R.id.weatherProgressBar);
 
         bookmarkController = new BookmarkController(myContext);
         Bookmark bookmark = bookmarkController.getBookmarkByIndex(bookmarkIndex);
@@ -117,16 +117,16 @@ public class CityForecastFragmentDialog extends DialogFragment {
                 super.onPostExecute(forecast);
                 // Main Weather values setup
                 String temperature = String.format("%sº", forecast.main.temp);
-                String weatherDescription =forecast.weather.get(0).description;
+                String weatherDescription = forecast.weather.get(0).description;
 
-                generalTemperatureTextView.setText(temperature);
+                temperatureTextView.setText(temperature);
                 weatherDescriptionTextView.setText(weatherDescription);
 
                 // Main Weather values setup
                 String humidity = String.format("%s", forecast.main.humidity);
                 String pressure = String.format("%s", forecast.main.pressure);
-                temperatureTextView.setText(temperature);
-                humidtyTextView.setText(humidity);
+
+                humidityTextView.setText(humidity);
                 pressureTextView.setText(pressure);
 
                 // Wind values
