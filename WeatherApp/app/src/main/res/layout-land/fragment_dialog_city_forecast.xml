@@ -6,8 +6,8 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/colorForecastDialogBackground"
-    android:minHeight="1000dp"
-    android:minWidth="1000dp"
+    android:minHeight="@dimen/forecast_screen_min_height"
+    android:minWidth="@dimen/forecast_screen_min_width"
     tools:context="com.backbase.weather_challenge.view.HomeActivity">
 
     <include
@@ -26,32 +26,31 @@
         layout="@layout/weather_general_widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"/>
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"/>
 
     <include
         layout="@layout/weather_wind_widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3"/>
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3"
-        />
+        app:layout_constraintGuide_percent="0.58"/>
 
     <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline4"
-        app:layout_constraintGuide_begin="155dp"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="155dp"/>
 </android.support.constraint.ConstraintLayout>

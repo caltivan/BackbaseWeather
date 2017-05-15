@@ -13,7 +13,7 @@
     <dimen name="forecast_pointer_value_text_size">20dp</dimen>
     <dimen name="forecast_pointer_padding">5dp</dimen>
 
-    <dimen name="forecast_screen_min_width">300dp</dimen>
-    <dimen name="forecast_screen_min_height">400dp</dimen>
+    <dimen name="forecast_screen_min_width">500dp</dimen>
+    <dimen name="forecast_screen_min_height">300dp</dimen>
 
 </resources>

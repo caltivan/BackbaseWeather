@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorForecastDialogBackground"
+    android:minHeight="@dimen/forecast_screen_min_height"
+    android:minWidth="@dimen/forecast_screen_min_width"
     tools:context="com.backbase.weather_challenge.view.HomeActivity">
 
     <include
         android:id="@+id/include"
         layout="@layout/weather_main_widget"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -24,7 +26,7 @@
     <include
         android:id="@+id/include2"
         layout="@layout/weather_general_widget"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -38,11 +40,13 @@
 
     <include
         layout="@layout/weather_wind_widget"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
