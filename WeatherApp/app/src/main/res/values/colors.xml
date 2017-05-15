@@ -3,8 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="colorRemoveIcon">#FF4081</color>
     <color name="colorRemoveIconPress">#3F51B5</color>
     <color name="colorBookmarkRow">#FFFFFF</color>
     <color name="colorBookmarkRowPress">#3F51B5</color>
+
+    <color name="colorWeatherTitleSection">#000000</color>
+    <color name="colorWeatherTitlePoint">#000000</color>
+    <color name="colorWeatherValuePoint">#000000</color>
+
+    <color name="colorWeatherInfoBackground">#FFFFFF</color>
+
 </resources>

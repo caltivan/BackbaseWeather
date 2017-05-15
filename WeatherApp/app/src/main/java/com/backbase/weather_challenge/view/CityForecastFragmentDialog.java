@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.backbase.weather_challenge.R;
 import com.backbase.weather_challenge.model.Forecast;
@@ -17,7 +19,7 @@ import com.google.gson.Gson;
 
 
 /**
- * Created by Easy Solutions on 5/13/17.
+ * Created by JGomez on 5/13/17.
  */
 
 public class CityForecastFragmentDialog extends DialogFragment {
@@ -26,6 +28,16 @@ public class CityForecastFragmentDialog extends DialogFragment {
     private Context myContext;
     private BookmarkController bookmarkController;
     private Gson gson = new Gson();
+    private TextView ciyTextView;
+    private TextView countryTextView;
+    private TextView temperatureTextView;
+    private TextView humidtyTextView;
+    private TextView pressureTextView;
+    private TextView generalTemperatureTextView;
+    private TextView weatherDescriptionTextView;
+    private ProgressBar weatherProgressBar;
+    private TextView windSpeedTextView;
+    private TextView windDegTextView;
 
     /**
      * Create a new instance of MyDialogFragment, providing "num"
@@ -49,19 +61,47 @@ public class CityForecastFragmentDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_city_forecast_dialog, container, false);
+        View content = inflater.inflate(R.layout.fragment_dialog_city_forecast, container, false);
         myContext = getActivity();
         getDialog().setTitle(myContext.getString(R.string.city_forecast_dialog_title));
+        ciyTextView = (TextView) content.findViewById(R.id.cityTextView);
+        countryTextView = (TextView) content.findViewById(R.id.countryTextView);
+        generalTemperatureTextView = (TextView) content.findViewById(R.id.generalTemperatureTextView);
+        weatherDescriptionTextView = (TextView) content.findViewById(R.id.weatherDescriptionTextView);
+        weatherProgressBar = (ProgressBar) content.findViewById(R.id.weatherProgressBar);
+
+        // Weather values
+        temperatureTextView = (TextView) content.findViewById(R.id.temperatureTextView);
+        humidtyTextView = (TextView) content.findViewById(R.id.humidityTextView);
+        pressureTextView = (TextView) content.findViewById(R.id.pressureTextView);
+
+        // Wind values
+        windSpeedTextView = (TextView) content.findViewById(R.id.windSpeedTextView);
+        windDegTextView = (TextView) content.findViewById(R.id.windDegTextView);
+
+
         bookmarkController = new BookmarkController(myContext);
         Bookmark bookmark = bookmarkController.getBookmarkByIndex(bookmarkIndex);
+        String city = bookmark.city;
+        String country = bookmark.country;
+
+        ciyTextView.setText(city);
+        countryTextView.setText(country);
+
         loadBookmarkWeatherTask(bookmark);
-        return v;
+        return content;
     }
 
     public void loadBookmarkWeatherTask(final Bookmark bookmark) {
         new AsyncTask<Bookmark, Void, Forecast>() {
 
             Bookmark _bookmark;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                weatherProgressBar.setVisibility(View.VISIBLE);
+            }
 
             @Override
             protected Forecast doInBackground(Bookmark... params) {
@@ -75,9 +115,33 @@ public class CityForecastFragmentDialog extends DialogFragment {
             @Override
             protected void onPostExecute(Forecast forecast) {
                 super.onPostExecute(forecast);
+                // Main Weather values setup
+                String temperature = String.format("%sº", forecast.main.temp);
+                String weatherDescription =forecast.weather.get(0).description;
+
+                generalTemperatureTextView.setText(temperature);
+                weatherDescriptionTextView.setText(weatherDescription);
+
+                // Main Weather values setup
+                String humidity = String.format("%s", forecast.main.humidity);
+                String pressure = String.format("%s", forecast.main.pressure);
+                temperatureTextView.setText(temperature);
+                humidtyTextView.setText(humidity);
+                pressureTextView.setText(pressure);
+
+                // Wind values
+                String windSpeed = String.format("%s", forecast.wind.speed);
+                String windDeg = String.format("%s", forecast.wind.deg);
+                windSpeedTextView.setText(windSpeed);
+                windDegTextView.setText(windDeg);
+
+                //
+
+                weatherProgressBar.setVisibility(View.GONE);
+
 
             }
-        }.execute(bookmark);
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bookmark);
     }
 }
 

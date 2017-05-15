@@ -10,6 +10,9 @@ import com.backbase.weather_challenge.model.forecast.Wind;
 
 import java.util.List;
 
+/**
+ * Created by JGomez on 5/13/17.
+ */
 public class Forecast {
 
     public Coord coord;

@@ -18,6 +18,7 @@ import java.util.Locale;
 
 
 /**
+ * Created by JGomez on 5/13/17.
  * Controller to save the current user selected bookmarks
  */
 public class BookmarkController {

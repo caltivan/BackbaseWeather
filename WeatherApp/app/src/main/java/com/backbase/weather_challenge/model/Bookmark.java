@@ -1,7 +1,7 @@
 package com.backbase.weather_challenge.model;
 
 /**
- * Created by Easy Solutions on 5/13/17.
+ * Created by JGomez on 5/13/17.
  */
 
 public class Bookmark {

@@ -3,6 +3,14 @@
     <string name="city_forecast_dialog_title">City Forecast</string>
 
     <string name="unknown_mark">Unknown</string>
+    <string name="temperature_title">Temperature</string>
+    <string name="humidity_title">Humidity</string>
+    <string name="pressure_title">Pressure</string>
+    <string name="weather_general_info_title">General</string>
+
+    <string name="wind_info_title">Wind</string>
+    <string name="wind_speed_title">Speed</string>
+    <string name="wind_deg_title">Deg</string>
 
 
 </resources>

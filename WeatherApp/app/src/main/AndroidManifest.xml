@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.backbase.weather_challenge.HomeActivity">
+        <activity android:name="com.backbase.weather_challenge.view.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
