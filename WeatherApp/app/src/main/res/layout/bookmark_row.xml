@@ -23,11 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textAlignment="viewEnd"
         android:textAppearance="?attr/textAppearanceListItem"/>
 
     <ImageView
         android:id="@+id/removeBookmarkButton"
+        android:padding="@dimen/forecast_pointer_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/bookmark_row_margin"
