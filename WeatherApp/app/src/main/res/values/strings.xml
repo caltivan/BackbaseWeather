@@ -14,6 +14,7 @@
     <string name="wind_info_title">Wind</string>
     <string name="wind_speed_title">Speed</string>
     <string name="wind_deg_title">Deg</string>
+    <string name="action_help">Help</string>
 
 
 </resources>
