@@ -9,16 +9,16 @@
     <color name="colorBookmarkRow">#FFFFFF</color>
     <color name="colorBookmarkRowPress">#3F51B5</color>
 
-    <color name="colorWeatherCountry">#000000</color>
-    <color name="colorWeatherCity">#000000</color>
-    <color name="colorWeatherTemperature">#000000</color>
-    <color name="colorWeatherDescription">#000000</color>
+    <color name="colorWeatherCountry">#3F51B5</color>
+    <color name="colorWeatherCity">#3F51B5</color>
+    <color name="colorWeatherTemperature">#FF4081</color>
+    <color name="colorWeatherDescription">#FF4081</color>
 
-    <color name="colorWeatherTitleSection">#000000</color>
-    <color name="colorWeatherTitlePoint">#000000</color>
-    <color name="colorWeatherValuePoint">#000000</color>
+    <color name="colorWeatherTitleSection">#3F51B5</color>
+    <color name="colorWeatherTitlePoint">#3F51B5</color>
+    <color name="colorWeatherValuePoint">#FF4081</color>
 
     <color name="colorWeatherInfoBackground">#FFFFFF</color>
-    <color name="colorForecastDialogBackground">#FFFFFF</color>
+    <color name="colorForecastDialogBackground">#FFFFEE</color>
 
 </resources>

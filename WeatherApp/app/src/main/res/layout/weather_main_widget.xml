@@ -59,6 +59,7 @@
             android:id="@+id/weatherDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/forecast_pointer_padding"
             android:textAlignment="center"
             android:textColor="@color/colorWeatherDescription"
             android:textSize="@dimen/forecast_description_text_size"/>
